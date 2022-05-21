@@ -1,0 +1,52 @@
+ALGORITHM SUM OF Distinct element 1
+VAR
+    array1  : ARRAY_OF INTEGER[];
+    array2  : ARRAY_OF INTEGER[];
+
+    i,j :INTEGER;
+
+   
+   Sum :INTEGER:=0;
+   exist1:BOOLEAN:= false ;
+   exist2:BOOLEAN:= false ;
+
+
+BEGIN
+  leng1:INTEGER := array1.length;
+   leng2:INTEGER := array2.length ;
+
+    FOR i FROM 0 TO leng1-1 STEP i++  DO
+        FOR j FROM 0 TO leng2-1 STEP i++  DO
+            IF (array1(i)=array2(j)) THEN
+                exist1 := true;
+
+            END_IF
+
+        END_FOR
+        IF (exist1 = false) THEN
+                    Sum := Sum+array1(i);
+
+        END_IF
+
+    END_FOR
+
+    /***loup inverse***/
+
+    FOR i FROM 0 TO leng2 STEP i++  DO
+        FOR i FROM 0 TO leng1 STEP i++  DO
+            IF (array2(i)=array1(j)) THEN
+                exist2 := true;
+
+            END_IF
+
+        END_FOR
+        IF (exist2 = false) THEN
+                    Sum := Sum+array2(i);
+
+        END_IF
+
+    END_FOR
+
+
+    write('the sum of element is:',sum);
+END
